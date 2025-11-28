@@ -1,15 +1,24 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 
 let newItem = ref ("");
-let items = ref (["Piimm", "Leib", "Munad"]);
+let i = 1;
+let items = ref ([
+    {id: i++, name: "Piim", isDone: false},
+    {id: i++, name: "Leib", isDone: true},
+    {id: i++, name: "Munad", isDone: false}
+]);
 
 function addItem() {
     if (newItem.value.trim() !== "") {
-        items.value.push(newItem.value.trim());
+        items.value.push({id: i++, name: newItem.value.trim(), isDone: false});
         newItem.value = "";
     }
 }
+
+let doneItems = computed(() => items.value.filter(item => item.isDone));
+let toDoItems = computed(() => items.value.filter(item => !item.isDone));
+
 </script>
 
 <template>  
@@ -25,8 +34,25 @@ function addItem() {
             </div>
         </div>
         <h2>Poenimekiri:</h2>
+       <ul>
+            <li v-for="item in items" :key="item.id">
+                {{ item.name }}
+                <input type="checkbox" v-model="item.isDone">
+            </li>
+        </ul>
+        <h2>Ostetud:</h2>
         <ul>
-            <li v-for="item in items">{{ item }}</li>
+            <li v-for="item in doneItems" :key="item.id">
+                {{ item.name }}
+                <input type="checkbox" v-model="item.isDone">
+            </li>
+        </ul>
+        <h2>Ostmata:</h2>
+        <ul>
+            <li v-for="item in toDoItems" :key="item.id">
+                {{ item.name }}
+                <input type="checkbox" v-model="item.isDone">
+            </li>
         </ul>
     </div>
 </template>
