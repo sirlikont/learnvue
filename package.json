@@ -5,7 +5,8 @@
   "private": true,
   "scripts": {
     "dev": "vite",
-    "build": "vite build"
+    "build": "vite build && cp dist/index.html dist/200.html",
+    "deploy": "bun run build && surge ./dist homeless-waste.surge.sh"
   },
   "devDependencies": {
     "@types/bun": "latest",
@@ -20,6 +21,7 @@
   },
   "dependencies": {
     "axios": "^1.13.2",
+    "surge": "^0.24.6",
     "vue-router": "4"
   }
 }

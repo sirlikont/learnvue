@@ -24,6 +24,7 @@ let toDoItems = computed(() => items.value.filter(item => !item.isDone));
 
 <template>  
     <div class="container is-fluid content mt-5">
+        <h2>test</h2>
         <div class="field has-addons">
             <div class="control is-expanded">
                 <input @keydown.enter="addItem" v-model="newItem" class="input" type="text" placeholder="Add item">
