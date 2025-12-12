@@ -5,11 +5,13 @@ import { createMemoryHistory, createWebHashHistory, createWebHistory, createRout
 import ToDo from './pages/ToDo.vue'
 import Modals from './pages/Modals.vue'
 import ChuckNorris from './pages/ChuckNorris.vue';
+import RickandMorty from './pages/RickandMorty.vue';
 
 const routes = [
   { path: '/', component: ToDo, name: 'ToDo' },
   { path: '/modals', component: Modals, name: 'Modals' },
   { path: '/chuck', component: ChuckNorris, name: 'ChuckNorris' },
+  { path: '/rickandmorty', component: RickandMorty, name: 'RickandMorty' },
 ]
 
 export const router = createRouter({
