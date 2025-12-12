@@ -17,8 +17,10 @@ function setActiveTab(i){
 }
 </script>
 <template>
-   <!-- <Tabs :active="activeTab" :items="titles" @changed="setActiveTab"></Tabs> -->
-  <!-- <component :is="components[activeTab]"></component> -->
+   
    <RouterTabs></RouterTabs>
-   <RouterView></RouterView>
+     <Suspense>
+    <RouterView></RouterView>
+   </Suspense>
+   
 </template>
